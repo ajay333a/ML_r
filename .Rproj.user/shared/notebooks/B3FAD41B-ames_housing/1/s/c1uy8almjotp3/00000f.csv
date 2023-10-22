@@ -1,0 +1,18 @@
+"0","lm_model <- linear_reg() %>% set_engine(""lm"")"
+"0","lm_model"
+"1","Linear Regression"
+"1",""
+"1"," Model Specification ("
+"1",""
+"1","regression"
+"1",""
+"1",")
+
+"
+"1","Computational engine:"
+"1"," "
+"1","lm"
+"1"," "
+"1","
+
+"

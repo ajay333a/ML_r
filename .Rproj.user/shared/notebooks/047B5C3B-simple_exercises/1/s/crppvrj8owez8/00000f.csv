@@ -1,0 +1,5 @@
+"0","# Place two plots next to one another:"
+"0","par(mfrow = c(1, 2))"
+"0",""
+"0","# Show residuals vs predicted values:"
+"0","plot(interaction_fit, which = 1)"

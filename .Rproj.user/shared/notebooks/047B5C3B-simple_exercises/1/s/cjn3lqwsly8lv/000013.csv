@@ -1,0 +1,16 @@
+"0","url <- ""https://data.cityofchicago.org/api/views/5neh-572f/rows.csv?accessType=DOWNLOAD&bom=true&format=true"""
+"2","Warning message:
+"
+"2","closing unused connection 3 (https://data.cityofchicago.org/api/views/5neh-572f/rows.csv?accessType=DOWNLOAD&bom=true&format=true) 
+"
+"0","data <- read_csv(url)"
+"2","[1mRows: [22m[34m1171469[39m [1mColumns: [22m[34m5[39m"
+"2","[36m──[39m [1mColumn specification[22m [36m────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (3): stationname, date, daytype
+[32mdbl[39m (1): station_id
+[32mnum[39m (1): rides"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message."
+"0","  "

@@ -1,0 +1,72 @@
+---
+title: "tidy_modelR_2.2"
+format: html
+---
+
+## 2.2 Tidymodels exercise
+
+```{r loading_packages}
+library(tidyverse)
+library(gt)
+```
+
+* Conecting to data and loading the data
+```{r}
+url <- "https://data.cityofchicago.org/api/views/5neh-572f/rows.csv?accessType=DOWNLOAD&bom=true&format=true"
+
+data <- read_csv(url)
+  
+```
+
+* Aggregating of data
+```{r}
+all_stations <- data %>% select(-station_id, -daytype) %>% 
+  rename("station" = stationname) %>% 
+  mutate(date = mdy(date), rides = rides/1000) %>% 
+  group_by(date, station) %>% 
+  summarise(rides = max(rides), .groups = "drop")
+
+all_stations %>% head()
+```
+## 3.1 Example
+
+```{r}
+data(crickets, package = "modeldata")
+names(crickets)
+
+ggplot(crickets, aes(x = temp, y = rate, color = species, pch = species, lty = species)) + geom_point(size = 2) +
+  geom_smooth(method = "lm", 
+              se = FALSE, alpha = 0.5) +
+  scale_color_brewer(palette = "Paired") +
+  labs(x = "Temperature (C)", y = "Chirp Rate (per minute)")
+
+```
+* Two way interaction model
+```{r}
+interaction_fit <- lm(rate ~ (temp * species), data = crickets)
+interaction_fit
+```
+
+* checking models fit.
+```{r}
+# Place two plots next to one another:
+par(mfrow = c(1, 2))
+
+# Show residuals vs predicted values:
+plot(interaction_fit, which = 1)
+
+# A normal quantile plot on the residuals:
+plot(interaction_fit, which = 2)
+```
+* checking models fittness with `anova`
+```{r}
+# Fit a reduced model:
+main_effect_fit <-  lm(rate ~ temp + species, data = crickets) 
+
+# Compare the two:
+anova(main_effect_fit, interaction_fit)
+
+broom::tidy(summary(main_effect_fit)) %>% gt()
+```
+
+
