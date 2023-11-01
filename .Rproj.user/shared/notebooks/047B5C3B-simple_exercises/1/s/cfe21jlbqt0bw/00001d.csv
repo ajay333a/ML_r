@@ -1,7 +1,0 @@
-"0","all_stations <- data %>% select(-station_id, -daytype) %>% "
-"0","  rename(""station"" = stationname) %>% "
-"0","  mutate(date = mdy(date), rides = rides/1000) %>% "
-"0","  group_by(date, station) %>% "
-"0","  summarise(rides = max(rides), .groups = ""drop"") %>% ungroup()"
-"0",""
-"0","all_stations %>% head()"
